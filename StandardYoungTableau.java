@@ -23,7 +23,7 @@ public class StandardYoungTableau {
   private int[] myCrossings; // stores crossing #'s
   private int myN, id, numTableau, maxCrossings;
 
-  private ArrayList<IDPair> myAnomolies; // stores id pairs
+  private ArrayList<IDPair<Integer>> myAnomolies; // stores id pairs
 
 
   // StandardYoungTableau constructor
@@ -33,7 +33,7 @@ public class StandardYoungTableau {
     this.myRanks = new int[numTableau];
     this.myCrossings = new int[numTableau];
     this.myShadows = new ArrayList<Shadow>(numTableau);
-    this.myAnomolies = new ArrayList<IDPair>();
+    this.myAnomolies = new ArrayList<IDPair<Integer>>();
     id = 0;
     maxCrossings = 0;
     generateTableauData();
@@ -175,7 +175,7 @@ public class StandardYoungTableau {
       for (int j = i+1; j < numTableau; ++j) {
         if ( (myRanks[i] < myRanks[j] && myShadows.get(i).contains(myShadows.get(j))/* && myCrossings[j] <= myCrossings[i]+1*/) ) {
           subcount[maxCrossings+(myCrossings[j]-myCrossings[i])]++;
-          IDPair pair = new IDPair(i,j);
+          IDPair<Integer> pair = new IDPair<>(i,j);
           myAnomolies.add(pair);
           /*
           if (myCrossings[j]-myCrossings[i] == 1) {
@@ -186,7 +186,7 @@ public class StandardYoungTableau {
           */
         } else if( (myRanks[j] < myRanks[i] && myShadows.get(j).contains(myShadows.get(i))/* && myCrossings[i] <= myCrossings[j]+1*/) ){
           subcount[maxCrossings+(myCrossings[i]-myCrossings[j])]++;
-          IDPair pair = new IDPair(j,i);
+          IDPair<Integer> pair = new IDPair<>(j,i);
           myAnomolies.add(pair);
           /*
           if (myCrossings[i]-myCrossings[j] == 1) {
@@ -216,7 +216,7 @@ public class StandardYoungTableau {
       System.out.println("No anomolies found for Young Tableau");
       System.out.println("  of size (" + myN + "," + myN + "," + myN + ")");
     } else {
-      for (IDPair pair : myAnomolies) { // for each pair of tableau
+      for (IDPair<Integer> pair : myAnomolies) { // for each pair of tableau
         printTableauData(pair.getFirst());
         printTableauData(pair.getSecond());
         printBuffer();
@@ -311,6 +311,7 @@ public class StandardYoungTableau {
     for (int i = 0; i < myN; ++i) {
       System.out.printf("%3d ", minus[i]);
     } // end for
+    System.out.println();
     System.out.println();
     
 

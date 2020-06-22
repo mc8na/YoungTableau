@@ -10,35 +10,39 @@ import java.io.*;
 // *****************************************************************************
 // *****************************************************************************
 
-public class IDPair {
+public class IDPair<ID> {
 
   // two elements in a pair
-  private int myFirst, mySecond;
+  private ID myFirst, mySecond;
 
 
   // IDPair constructor
-  public IDPair(int first, int second) {
-    this.myFirst = first;
-    this.mySecond = second;
+  public IDPair(ID first, ID second) {
+    myFirst = first;
+    mySecond = second;
   } // end IDPair constructor
 
 
-  public int getFirst() {
+  // returns first ID in the pair
+  public ID getFirst() {
     return myFirst;
   } // end getFirst
 
 
-  public int getSecond() {
+  // returns second ID in the pair
+  public ID getSecond() {
     return mySecond;
   } // end getSecond
 
 
-  public void setFirst(int newValue) {
+  // sets first ID in the pair to newValue
+  public void setFirst(ID newValue) {
     myFirst = newValue;
   } // end setFirst
 
   
-  public void setSecond(int newValue) {
+  // sets second ID in the pair to newValue
+  public void setSecond(ID newValue) {
     mySecond = newValue;
   } // end setSecond
   
