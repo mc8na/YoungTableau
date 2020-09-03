@@ -20,9 +20,10 @@ public class Driver {
     int n = console.nextInt();
 
     // create Standard Young Tableaux of size n
-    StandardYoungTableau yt = new StandardYoungTableau(n);
-    yt.findAnomolies();
-    //yt.readFile7(console);
+    TableauData tabData = new TableauData(n);
+    tabData.printTableauData();
+    //tabData.findAnomolies();
+    //tabData.readFile7(console);
 
   } // main
 
